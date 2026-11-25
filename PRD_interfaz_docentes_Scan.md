@@ -1,6 +1,6 @@
 # PRD — Interfaz de docentes de Miseño
 
-**Borrador 0.3 · 24 de noviembre de 2026 · Para iterar**
+**Borrador 0.5 · 25 de noviembre de 2026 · Para iterar**
 
 El sistema se llama **Miseño**. Scan es el nombre anterior, conservado únicamente en nombres de archivos históricos. Esta revisión incorpora la segunda conversación y los dos moodboards aportados por el equipo.
 
@@ -250,12 +250,34 @@ Los mismos de la app del alumno (`img/`, estado *reposo* salvo que se indique):
 - **La jornada:** la misma línea de tiempo vertical del alumno (Matemática 8:30 · Lengua 9:30 · Recreo 10:20 · Huerta 10:40), con nodos huecos, el actual relleno con halo y los profes debajo. En móvil se vuelve horizontal.
 - Las líneas de tiempo del historial usan los mismos nodos.
 
-### Estructura de la interfaz (v0.3)
+### Estructura de la interfaz (v0.4, a partir del Figma de Candela)
 
-- **Inicio:** Guio saluda con cuántas situaciones esperan al docente. Tres entradas: Grupo, Recorridos, Proyectos.
-- **Grupo:** la jornada a la izquierda; arriba "Para acompañar" con las derivaciones pendientes (alumno, materia, quién derivó, estado); abajo todo el grupo con búsqueda y filtro por materia. La ficha se abre al costado.
-- **Recorridos:** carrusel de alumnos y un encabezado en el tono de la materia del alumno elegido, con su profe, su estado y "Registrar intervención" siempre a mano.
-- **Proyectos:** el chip de materia y los profes del proyecto (la huerta es de Numi y Fini, como en el día del alumno).
+- **Menú lateral fijo:** Grupo, Recorridos, Reuniones y Proyectos, con la marca arriba y el docente abajo. En móvil pasa a una barra superior.
+- **Inicio:** solo tres tarjetas grandes, sin logo ni texto (la marca sería redundante): Grupo en celeste, Recorridos en verde, Proyectos en rosa. Grupo muestra cuántas situaciones esperan.
+- **Grupo:** la jornada a la izquierda; arriba "Para acompañar"; abajo todo el grupo con búsqueda y filtro por materia. Cada tarjeta abre la ficha del alumno.
+- **Ficha del alumno (nueva):** anillo con la inicial, edad, cumpleaños y familia; intereses (hobbies y barras por área); aprendizaje como árbol (una rama por materia, una hoja llena por logro); amigos principales (abren su ficha); su progreso comparado consigo mismo; estado sensorial del día, tomado del check-in de la app del alumno; información médica restringida; próxima reunión.
+- **Recorridos:** carrusel de alumnos y encabezado en el tono de su materia, con "Ver ficha" y "Registrar intervención".
+- **Reuniones (nueva):** próximas y pasadas, con familias y con el equipo. Para cada una, Miseño propone temas a partir de las fuentes (Guio piensa) y el docente registra acuerdos. Se puede agendar una nueva.
+- **Proyectos:** chip de materia y profes del proyecto. La huerta pasa a llamarse "El recetario de la huerta", como en la app del alumno.
+
+### Árbol de aprendizaje (v0.5)
+
+- **Forma:** una rama por materia que sale del tronco y crece de 1º a 6º grado. Cada hoja es un dominio de contenido de ese grado.
+- **Ramas:** todos los chicos tienen las cuatro del núcleo (Lengua, Matemática, Ciencias, Historia). Las optativas (Dibujo, Música, Programación, Gastronomía) aparecen solo en quien las cursa y desde el grado en que empezó; el tramo anterior se dibuja punteado.
+- **Fuentes:** Lengua y Matemática, Common Core (grados 1 a 6, con su código: 3.NF, RL.5…). Ciencias e Historia, NAP de Ciencias Naturales y Ciencias Sociales. Dibujo y Música, NAP de Educación Artística en 1º ciclo y propuesta propia en 2º ciclo. Programación, NAP de Educación Digital, Programación y Robótica (que se organizan por ciclo) repartidos por grado. Gastronomía, propuesta propia.
+- **Estados de cada hoja:** logrado (llena), en curso (más grande, con borde), a reforzar (llena con anillo ámbar punteado) y por venir (vacía). Ninguno depende solo del color.
+- **Dónde vive:** en la ficha como tarjeta chica; al tocarla se abre a pantalla completa. Al tocar una hoja, un panel muestra el contenido, el grado, el código y la fuente, y las actividades donde lo trabajó, con acceso a Recorridos.
+
+### Menos texto (v0.5)
+
+- Cada pantalla tiene una sola acción con palabra; las secundarias son íconos con etiqueta flotante (al pasar el mouse o con el teclado) y `aria-label`.
+- Sin subtítulos de pantalla ni notas que expliquen la interfaz. Se conservan los datos (fechas, fuentes, resultados).
+
+### Datos sensibles en la ficha
+
+- La información médica no se muestra en el prototipo: queda como espacio restringido que carga la familia o el equipo de orientación.
+- El estado sensorial muestra solo el check-in del día (ánimo y sueño) y lo que Guio le dijo al alumno; no se guarda un historial visible.
+- La curva de progreso compara al alumno consigo mismo; nunca muestra posiciones ni promedios del grupo.
 
 ### Movimiento y accesibilidad
 
