@@ -1,6 +1,6 @@
 # PRD — Interfaz de docentes de Miseño
 
-**Borrador 0.2 · 10 de noviembre de 2026 · Para iterar**
+**Borrador 0.3 · 24 de noviembre de 2026 · Para iterar**
 
 El sistema se llama **Miseño**. Scan es el nombre anterior, conservado únicamente en nombres de archivos históricos. Esta revisión incorpora la segunda conversación y los dos moodboards aportados por el equipo.
 
@@ -124,7 +124,7 @@ Las lecturas de la pulsera están simuladas en el HTML infantil. Su interpretaci
 
 **Propuesta actualizada:** priorizar el caso de discrepancia de información descrito en la sección 13. Construir una vista de grupo, un detalle de situación con evidencias y fuentes, y un registro de intervención con seguimiento. La derivación académica y el cambio de Matemática y Música quedan como casos secundarios.
 
-Usar datos de ejemplo coherentes con el prototipo infantil. Evolucionar su lenguaje visual hacia el sistema de diseño de Miseño descrito en la sección 14. El HTML existente es un antecedente; los moodboards orientan la próxima iteración.
+Usar datos de ejemplo coherentes con el prototipo infantil. La interfaz docente comparte el sistema de diseño de la app del alumno (sección 14): misma tipografía, mismos tonos por materia y mismos personajes.
 
 La integración real entre interfaces, los datos biométricos, la mensajería y los cambios automáticos del algoritmo quedan fuera de este primer prototipo propuesto.
 
@@ -186,96 +186,88 @@ Este escenario es ficticio. Los resultados de una actividad no permiten atribuir
 
 ## 14. Sistema de diseño de Miseño
 
-### Referencias y dirección visual
+### Decisión: un solo lenguaje para alumnos y docentes
 
-Referencias locales conservadas junto al PRD:
+Desde la versión 0.3, la interfaz docente usa el mismo sistema visual que la app del alumno (`scan-alumno`, v1.1). Un docente que mira la pantalla de un chico reconoce los mismos colores, profes y momentos del día que ve en la suya. La diferencia está en la densidad y el tono: el alumno ve un momento por vez; el docente ve el grupo entero y necesita comparar.
 
-- [Moodboard de materialidad y carácter](moodboard_miseno_materialidad.png): robustez, juego, minimalismo y uso diurno; objetos compactos, cantos redondeados, materiales claros y acentos vivos.
-- [Moodboard de interfaz y atmósfera](moodboard_miseno_interfaz.png): blancos y grises luminosos, superficies translúcidas, volúmenes suaves, esferas, recorridos y nodos con luz difusa y gradientes multicolor.
+Los moodboards de materialidad e interfaz (`moodboard_miseno_materialidad.png`, `moodboard_miseno_interfaz.png`) siguen como referencia de carácter: diurno, claro, objetos estables con cantos redondeados y acentos vivos. La esfera translúcida de la versión 0.2 se reemplaza por Guio, que ya es la presencia de Miseño para los alumnos.
 
-**Interpretación propuesta:** un entorno educativo diurno, claro y tangible, con una presencia tecnológica suave. La robustez se traduce en controles estables y estados inequívocos; lo lúdico aparece en formas y acentos. La interfaz docente necesita legibilidad y una jerarquía que permita trabajar con varios alumnos.
+### Tipografía
 
-Los moodboards no especifican colores exactos, tipografías ni dimensiones. Los valores siguientes son propuestas de implementación para validar con el equipo.
-
-### Paleta inicial
-
-| Token | Valor propuesto | Uso |
+| Uso | Fuente | Dónde |
 |---|---|---|
-| Fondo | `#F3F4F1` | Superficie general clara, ligeramente cálida |
-| Superficie | `#FFFFFF` | Tarjetas, formularios y detalle de evidencias |
-| Superficie secundaria | `#E9ECEB` | Agrupaciones, zonas de apoyo y controles inactivos |
-| Texto principal | `#202A34` | Títulos y contenido |
-| Texto secundario | `#53616C` | Metadatos y explicaciones |
-| Acción principal | `#315DCE` | Botones, enlaces y selección |
-| Foco | `#2449AA` | Indicador de navegación por teclado |
-| Acento agua | `#89DCD6` | Nodos y visualizaciones de apoyo |
-| Acento lavanda | `#B7ADE6` | Contextos y presencia del sistema |
-| Acento coral | `#F19B83` | Detalles lúdicos e ilustraciones |
-| Atención | `#8B520D` sobre `#FFF0D8` | Situaciones que requieren revisión |
-| Confirmación | `#23674F` sobre `#E0F1E8` | Acciones completadas |
-| Error | `#A43545` sobre `#FCE8EC` | Fallos o validación de formularios |
+| Interfaz y lectura | IBM Plex Sans 400, 500 y 600 | Títulos, cuerpo, botones |
+| Voz y metadatos | IBM Plex Mono 400 y 500 | Lo que dice Guio, citas textuales de alumno y familia, fechas, horarios, etiquetas |
 
-Agua, lavanda y coral se usan como acentos, no como texto pequeño sobre blanco. Los gradientes combinan estos tonos en elementos de presencia, sin colocarlos detrás de tablas o textos extensos. Verificar el contraste de cada combinación al implementar.
+La regla es la misma que en la app del alumno: **lo que alguien dijo va en mono**. Así se distingue de un vistazo una declaración (de la familia, del alumno o de Miseño) del texto de la interfaz.
 
-### Tipografía y jerarquía
+Escala: título de pantalla 32 px; sección 22 px; tarjeta 18 px; cuerpo 16 px; metadatos 12–14 px.
 
-- **Títulos:** Fredoka, pesos 400 y 500, como continuidad propuesta con el prototipo existente. Usarla con moderación para conservar el carácter amable.
-- **Texto y datos:** Atkinson Hyperlegible, pesos 400 y 700. Alternativas locales: Verdana y sans-serif del sistema.
-- **Escala orientativa:** título de pantalla 32 px; sección 24 px; tarjeta 20 px; cuerpo 16–18 px; metadatos 14 px. Interlineado del cuerpo entre 1,45 y 1,6.
-- Evitar párrafos centrados y mayúsculas extensas. Alinear datos comparables y utilizar cifras tabulares en horarios y cantidades.
+### Color
 
-La elección tipográfica procede del antecedente HTML, no de una identificación exacta de las fuentes de los moodboards.
+**Tono base (Miseño):** fondo `#E8F6FC`, suave `#BEE6F6`, nodo `#36BDE6`, botón `#0B7DA3`, texto `#08374A`. Es el mismo tono con el que abre la app del alumno.
 
-### Espacio, superficies y materialidad
+**Un tono por materia**, con los valores de la app del alumno (fondo · suave · nodo · botón · texto):
 
-- Retícula basada en múltiplos de 4 px: 4, 8, 12, 16, 24, 32 y 48.
-- Márgenes de escritorio de 32 px y separación entre paneles de 24 px. En pantallas pequeñas, márgenes de 16 px.
-- Tarjetas con 20–24 px de radio y relleno de 24 px; controles con 12–16 px de radio.
-- Superficies de vidrio esmerilado en la estructura general, con una alternativa opaca cuando no haya soporte o el fondo afecte la lectura. Formularios y evidencias sobre fondos sólidos.
-- Sombras suaves y bordes sutiles; evitar que los indicadores o controles dependan de relieves poco visibles.
-- La referencia a materiales físicos informa la sensación de objetos estables y táctiles. No implica incorporar texturas fotográficas de césped o cartón detrás de la información.
+| Materia | Profe | Tono |
+|---|---|---|
+| Matemática | Numi | `#FDEDEF` · `#F7C6CD` · `#E4566A` · `#B42A3E` · `#4D0F19` |
+| Lengua | Otto | `#FEF1E6` · `#F9D0AE` · `#EF8638` · `#A64E0E` · `#4A2309` |
+| Ciencias | Fini | `#EBF7EC` · `#C0E6C8` · `#42BE62` · `#1D7D3A` · `#0D3B1C` |
+| Dibujo | Dona | `#F2EDFF` · `#D9CBFF` · `#8A4FFF` · `#6131D6` · `#25104F` |
+| Gastronomía | Rolo | `#FFEEF5` · `#FFC7DD` · `#FF5FA2` · `#C42A6C` · `#4D0C29` |
+| Huerta | Numi y Fini | `#F2F8E4` · `#D5E9AE` · `#8DBF3F` · `#4D7A12` · `#1F3307` |
+| Recreo | — | `#FDF7DE` · `#F4E29C` · `#E2B41C` · `#7E6000` · `#3B2E00` |
+| Historia, Música | sin profe todavía | neutro `#EEF3F5` · `#D3DEE3` · `#7C939E` · `#3E5A66` · `#1E3640` |
 
-### Componentes principales
+En la interfaz docente el tono de materia identifica, no alarma: tiñe avatares, chips de materia, el encabezado del alumno y los nodos de la jornada. **Las acciones principales siempre usan el botón de Miseño (`#0B7DA3`)**, nunca el rojo de Matemática, para que un botón no se lea como alerta.
 
-| Componente | Contenido y comportamiento |
+**Estados y orígenes** (con texto siempre; nunca solo color):
+
+| Significado | Colores |
 |---|---|
-| Cabecera | Marca Miseño, espacio docente y grupo actual |
-| Navegación | Mi grupo, Situaciones, Recorridos y Proyectos; selección visible y etiquetada |
-| Tarjeta de alumno | Nombre, actividad y situación concreta; sin puntuación global de valor del alumno |
-| Tarjeta de situación | Motivo, fecha, estado y acción para revisar |
-| Panel de evidencias | Registros comparables con fuente, fecha, contexto y acceso al detalle |
-| Etiqueta de origen | Alumno, Familia, Docente o Inferencia de Miseño; siempre con texto |
-| Panel de discrepancia | Versiones en paralelo y estado de revisión, sin declarar un ganador automático |
-| Formulario de intervención | Observación, contexto, acción realizada y seguimiento |
-| Línea de tiempo | Eventos, cambios y responsables con secuencia temporal legible |
-| Confirmación | Qué se guardó, dónde y qué sucederá después |
+| Atención / pendiente | `#633806` sobre `#FAEEDA` (el "casi" del alumno) |
+| Hecho / confirmado | `#085041` sobre `#E1F5EE` (el "ok" del alumno) |
+| Error | `#9E2234` sobre `#FDEDEF` |
+| Origen Familia | verde ok |
+| Origen Alumno | `#3D1F80` sobre `#F2EDFF` |
+| Origen Docente | contorno suave, sin relleno |
+| Origen Miseño | tono base + Guio en miniatura |
 
-Los componentes deben contemplar estado vacío, carga, error y datos desactualizados. Las acciones no disponibles deben explicar su motivo.
+### Personajes
 
-### Nodos, árboles y presencia del sistema
+Los mismos de la app del alumno (`img/`, estado *reposo* salvo que se indique):
 
-La segunda conversación propone un árbol o grafo para el recorrido infantil. Para docentes, explorar una red simplificada de temas y relaciones con acceso al detalle y una alternativa en lista. La vista general debe seguir permitiendo encontrar pendientes sin interpretar un grafo complejo.
+- **Guio** es Miseño: marca en la cabecera, saludo de inicio (estado *habla*), interpretación y recomendaciones (estado *piensa*), avisos de confirmación y la pestaña "Miseño" junto a "Familia".
+- **Numi, Otto, Fini, Dona y Rolo** firman sus materias: aparecen en la jornada, en la ficha del alumno y en cada derivación ("Derivó Numi"). Así el docente sabe qué profe virtual pidió ayuda.
+- Los personajes acompañan una etiqueta; nunca la reemplazan.
 
-La esfera o el halo de Miseño puede usar luz difusa y gradientes para señalar presencia o procesamiento. Su animación no sustituye etiquetas como “Guardando” o “En revisión”.
+### Formas y componentes
 
-La idea del árbol que pierde vitalidad, las luces rojas y verdes y los rankings se discutieron como recursos narrativos. No quedan adoptados en esta versión como indicadores docentes. Si se exploran, deben documentarse como una variante y evaluarse por la presión y comparación que generan.
+- Tarjetas blancas planas sobre el fondo de tono, radio 24 px, sin sombras ni vidrio esmerilado.
+- Botones en píldora (radio 99 px), mínimo 48 px de alto: primario relleno; secundario blanco con borde suave, como "Repetir" en la app del alumno.
+- Etiquetas y chips en píldora y mono; el chip de materia lleva el punto de color del nodo.
+- **La jornada:** la misma línea de tiempo vertical del alumno (Matemática 8:30 · Lengua 9:30 · Recreo 10:20 · Huerta 10:40), con nodos huecos, el actual relleno con halo y los profes debajo. En móvil se vuelve horizontal.
+- Las líneas de tiempo del historial usan los mismos nodos.
 
-### Movimiento e interacción
+### Estructura de la interfaz (v0.3)
 
-- Transiciones cortas, de aproximadamente 150–250 ms, para cambios de estado y apertura de paneles.
-- Evitar destellos, pulsos permanentes y celebraciones que compitan con la atención al grupo.
-- Respetar la preferencia de movimiento reducido.
-- Usar iconos simples y redondeados con etiquetas. Reservar el color saturado para acciones o información relevante.
-- Mantener visible el contexto del alumno al abrir una situación o registrar una intervención.
+- **Inicio:** Guio saluda con cuántas situaciones esperan al docente. Tres entradas: Grupo, Recorridos, Proyectos.
+- **Grupo:** la jornada a la izquierda; arriba "Para acompañar" con las derivaciones pendientes (alumno, materia, quién derivó, estado); abajo todo el grupo con búsqueda y filtro por materia. La ficha se abre al costado.
+- **Recorridos:** carrusel de alumnos y un encabezado en el tono de la materia del alumno elegido, con su profe, su estado y "Registrar intervención" siempre a mano.
+- **Proyectos:** el chip de materia y los profes del proyecto (la huerta es de Numi y Fini, como en el día del alumno).
 
-### Accesibilidad y adaptación
+### Movimiento y accesibilidad
 
-- Verificar contraste mínimo de 4,5:1 en texto normal y 3:1 en texto grande y controles relevantes.
-- Ofrecer foco visible, navegación por teclado, etiquetas de formulario y mensajes de error asociados al campo.
-- Proponer áreas de interacción de al menos 44 × 44 px, sin reducirlas para aumentar la densidad.
-- Ningún estado depende solo de rojo, verde, brillo o animación.
-- En escritorio, usar navegación estable y panel principal con detalle contextual. En pantallas pequeñas, apilar paneles manteniendo acceso a situación, evidencias y acción.
-- El origen de un dato debe seguir siendo legible sin color y los gráficos deben ofrecer información equivalente en texto.
+- Entradas cortas (240 ms), aparición desde abajo como en el alumno; el logo de Guio entra con un pequeño rebote en el splash.
+- Sin pulsos permanentes ni celebraciones; respeta `prefers-reduced-motion`.
+- Contraste mínimo 4,5:1 en texto; foco visible de 3 px en el color de botón; áreas táctiles de 44 px o más.
+- Ningún estado depende solo del color ni de un personaje.
+
+### Pendientes del sistema
+
+- Historia y Música no tienen profe en la app del alumno: definir si se suman personajes o si esas materias quedan fuera del día del alumno.
+- La jornada del docente está fija al día de Joaquín; falta decidir si cada alumno tiene horarios distintos y cómo se resume eso para el grupo.
 
 ## 15. Definiciones abiertas para la próxima iteración
 
